@@ -8,10 +8,6 @@ import (
 )
 
 func GetHello(c echo.Context) error {
-	return c.String(http.StatusOK, "Hello")
-}
-
-func GetRestrictedHello(c echo.Context) error {
 	user := c.Get("user").(*jwt.Token)
 	claims := user.Claims.(jwt.MapClaims)
 	username := claims["username"].(string)
